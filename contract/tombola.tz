@@ -1,0 +1,72 @@
+{ parameter (or (or (unit %close) (string %participate)) (unit %reset)) ;
+  storage
+    (pair (pair (address %admin) (map %participants address string))
+          (or %status (unit %cLOSE) (unit %oPEN))) ;
+  code { UNPAIR ;
+         IF_LEFT
+           { IF_LEFT
+               { DROP ;
+                 SENDER ;
+                 SWAP ;
+                 DUP ;
+                 DUG 2 ;
+                 CAR ;
+                 CAR ;
+                 COMPARE ;
+                 NEQ ;
+                 IF { PUSH string "Only admin can close Tombola" ; FAILWITH } {} ;
+                 UNIT ;
+                 LEFT unit ;
+                 SWAP ;
+                 CAR ;
+                 PAIR ;
+                 NIL operation ;
+                 PAIR }
+               { PAIR ;
+                 DUP ;
+                 CDR ;
+                 DUP ;
+                 CDR ;
+                 IF_LEFT
+                   { DROP 3 ; PUSH string "Tombola is closed, come back later" ; FAILWITH }
+                   { DROP ;
+                     DUP ;
+                     CDR ;
+                     SWAP ;
+                     DUP ;
+                     DUG 2 ;
+                     CAR ;
+                     CDR ;
+                     DIG 3 ;
+                     CAR ;
+                     SOME ;
+                     SOURCE ;
+                     UPDATE ;
+                     DIG 2 ;
+                     CAR ;
+                     CAR ;
+                     PAIR ;
+                     PAIR ;
+                     NIL operation ;
+                     PAIR } } }
+           { DROP ;
+             SENDER ;
+             SWAP ;
+             DUP ;
+             DUG 2 ;
+             CAR ;
+             CAR ;
+             COMPARE ;
+             NEQ ;
+             IF { PUSH string "Only admin can reset Tombola" ; FAILWITH } {} ;
+             UNIT ;
+             RIGHT unit ;
+             EMPTY_MAP address string ;
+             DIG 2 ;
+             CAR ;
+             CAR ;
+             PAIR ;
+             PAIR ;
+             NIL operation ;
+             PAIR } } }
+

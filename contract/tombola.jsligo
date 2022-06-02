@@ -1,0 +1,47 @@
+
+type parameter = 
+| ["Participate",string ] //optional email
+| ["Reset"]
+| ["Close"]
+;
+
+type Status = 
+| ["OPEN"]
+| ["CLOSE"]
+;
+
+type storage = {
+  participants : map<address,string>,
+  admin : address,
+  status : Status
+};  
+
+type return_ =  [list<operation>, storage]; 
+
+const participate = ([email,store]:[string,storage]) : return_ => {
+    return match(store.status, {
+        CLOSE : () =>  failwith("Tombola is closed, come back later"),
+        OPEN : () => [list([]),{...store,participants : Map.add(Tezos.source,email,store.participants)}] 
+    }); 
+};
+
+const reset = (store:storage) : return_ => {
+    if(store.admin != Tezos.sender) failwith("Only admin can reset Tombola");
+    return [list([]),{...store,participants : Map.empty as map<address,string>,status:OPEN()}];
+};
+
+const close = (store:storage) : return_ => {
+    if(store.admin != Tezos.sender) failwith("Only admin can close Tombola");
+    return [list([]),{...store,status:CLOSE()}];
+};
+
+// MAIN  
+
+const main = (params:[parameter , storage]): return_ => {
+  let [action , store] : [parameter , storage] = params;
+  return match (action, {
+      Participate : (email : string) => participate([email,store]),
+      Reset : () => reset(store),
+      Close : () => close(store)
+    })
+};
