@@ -5,10 +5,9 @@ import { Backdrop, Button, CircularProgress, TextField } from '@mui/material';
 import ConnectButton from './ConnectWallet';
 import DisconnectButton from './DisconnectWallet';
 import { useSnackbar } from "notistack";
-import { Contract, TezosToolkit, WalletContract,MichelsonMap } from '@taquito/taquito';
+import { TezosToolkit, WalletContract,MichelsonMap } from '@taquito/taquito';
 import { TransactionInvalidBeaconError } from './TransactionInvalidBeaconError';
-import { OPEN } from 'ws';
-
+import {Header} from './styles/Header'
 class STATUS {
   oPEN : string|undefined;
   cLOSE : string|undefined;
@@ -121,14 +120,14 @@ function App() {
   return ( 
     
     <Fragment>
-    
+
     <Backdrop
     sx={{ color: '#fff', zIndex: (theme : any) => theme.zIndex.drawer + 1 }}
     open={tezosLoading}
     >
     <CircularProgress color="inherit" />
     </Backdrop>
-    
+    <Header>
     {!userAddress?
       <ConnectButton
       tezosUrl={tezosUrl}
@@ -146,6 +145,7 @@ function App() {
       setNetwork={setNetwork}
       />
     }
+    </Header>
     
     <div>
     I am {userAddress}
