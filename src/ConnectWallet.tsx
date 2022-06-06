@@ -49,7 +49,7 @@ const ConnectButton = ({
     (async () => {
       // creates a wallet instance if not exists
       if(!wallet){wallet = new BeaconWallet({
-        name: "TzVote",
+        name: "Tombola",
         preferredNetwork: NetworkType[network.toUpperCase() as keyof typeof NetworkType],
       });}
       const Tezos = new TezosToolkit(tezosUrl);
