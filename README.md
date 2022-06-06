@@ -10,7 +10,7 @@ ligo compile storage tombola.jsligo '{participants : Map.empty as map<address,st
 # DEPLOY
 
 ```bash
-tezos-client originate contract tombolaIthaca transferring 0 from tz1VApBuWHuaTfDHtKzU3NBtWFYsxJvvWhYk running tombola.tz --init "$(cat tombolaStorage.tz)" --burn-cap 1
+tezos-client originate contract tombolaIthaca transferring 0 from tz1VApBuWHuaTfDHtKzU3NBtWFYsxJvvWhYk running tombola.tz --init "$(cat tombolaStorage.tz)" --burn-cap 1 --force
 ```
 
 REACT_APP_CONTRACT=KT1E5YodfeGfaRYsQUvHJLapEGCd9Tzj9DRs
