@@ -7,7 +7,9 @@ import DisconnectButton from './DisconnectWallet';
 import { useSnackbar } from "notistack";
 import { TezosToolkit, WalletContract,MichelsonMap } from '@taquito/taquito';
 import { TransactionInvalidBeaconError } from './TransactionInvalidBeaconError';
-import {Header} from './styles/Header'
+import {Header} from './styles/Header';
+import {Footer} from './styles/Footer';
+import github from './images/github.png';
 class STATUS {
   oPEN : string|undefined;
   cLOSE : string|undefined;
@@ -175,6 +177,9 @@ function App() {
     </Fragment>
   :""
   }
+    <Footer>
+    <img src={github} alt="github" />
+    </Footer>
     </Fragment>
     );
   }
