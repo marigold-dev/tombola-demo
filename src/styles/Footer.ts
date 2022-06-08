@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const Footer = styled.footer`
   display:flex;
-  background: #EA3448;
+  background:  #cc0100;
   height: 68px;
   align-items: center;
-  padding:10px;
+  padding: 25px 40px;
+  overflow-x: hidden;
 
-  img {
-    height: 40px;
+  p {
+    color: white;
   }
 
 `;
