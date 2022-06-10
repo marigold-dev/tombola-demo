@@ -13,7 +13,7 @@ import github from "./images/github.png";
 import tombola from "./images/tombola.jpeg";
 import { Section, SubTitle, Title } from "./styles/section";
 import { Mail } from "./styles/mail";
-import { Tombola } from "./styles/Tombola";
+import { Tombola, TombolaOff } from "./styles/Tombola";
 class STATUS {
   oPEN: string | undefined;
   cLOSE: string | undefined;
@@ -182,33 +182,64 @@ function App() {
           <SubTitle>{contractStorage?.participants.size}</SubTitle>
         </div>
 
-        <div>
-          <Title>Tombola admin : </Title>
-          <SubTitle>{contractStorage?.admin}</SubTitle>
+        <div className="admin-info">
+          <div className="info">
+          <Title>Tombola admin </Title>
+          <a>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            viewBox="0 0 48 48"
+            width="48"
+          >
+            <path d="M0 0h48v48h-48z" fill="none" />
+            <path d="M22 34h4v-12h-4v12zm2-30c-11.05 0-20 8.95-20 20s8.95 20 20 20 20-8.95 20-20-8.95-20-20-20zm0 36c-8.82 0-16-7.18-16-16s7.18-16 16-16 16 7.18 16 16-7.18 16-16 16zm-2-22h4v-4h-4v4z" />
+          </svg>
+          </a>
+          </div>
+          <div className="code"><SubTitle>{contractStorage?.admin}</SubTitle></div>
         </div>
 
-        <div>
+        {/* <div>
           <Title>Tombola status :</Title>{" "}
           <SubTitle>{contractStorage?.status.oPEN ? "OPEN" : "CLOSE"}</SubTitle>
-        </div>
+        </div> */}
       </Section>
       <Mail>
-      <h3>Enter your email </h3>
-      <TextField
-        id="outlined-basic"
-        label="Email (optional)"
-        variant="outlined"
-        value={userEmail}
-        type="email"
-        onChange={(e) => setUserEmail(e.currentTarget.value)}
-      />
+        <h3>Enter your email </h3>
+        <TextField
+          id="outlined-basic"
+          label="Email (optional)"
+          variant="outlined"
+          value={userEmail}
+          type="email"
+          onChange={(e) => setUserEmail(e.currentTarget.value)}
+        />
       </Mail>
-      <Tombola>
-      <img src={tombola} alt="tombola" />
-      <Button variant="contained" onClick={(e) => handleParticipate(e)}>
-        PARTICIPATE
-      </Button>
-      </Tombola>
+      {contractStorage?.admin == userAddress ? (
+        <TombolaOff>
+        <img className="off" src={tombola} alt="tombola" />
+        <Title>Thank you for participating in the Tombola app</Title>
+        </TombolaOff>
+      ) : (
+        <Tombola>
+           <img src={tombola} alt="tombola" />
+        {!userAddress ? (
+          <ConnectButton
+            tezosUrl={tezosUrl}
+            setWallet={setWallet}
+            setUserAddress={setUserAddress}
+            wallet={wallet}
+            network={network}
+            setTezos={setTezos}
+          />
+        ) : (
+          <Button variant="contained" onClick={(e) => handleParticipate(e)}>
+          PARTICIPATE
+        </Button>
+        )}
+        </Tombola>
+      )}
 
       {contractStorage?.admin == userAddress ? (
         <Fragment>
@@ -222,9 +253,10 @@ function App() {
       ) : (
         ""
       )}
-    <Footer>
-      <p>Powered by Marigold 2022</p>
-    </Footer>
+      <Footer>
+        <p>Tezos Foundation</p>
+        <p>Powered by Marigold</p>
+      </Footer>
     </Fragment>
   );
 }

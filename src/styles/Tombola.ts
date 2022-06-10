@@ -20,6 +20,10 @@
      width:180px;
      animation: play .5s infinite;
  }
+ .off {
+     animation: none;
+     filter: grayscale(100%);
+ }
 @media only screen and (min-width: 992px) {
     img {
      height:230px;
@@ -33,3 +37,6 @@ button {
 }
  `
  ;
+ export const TombolaOff = styled(Tombola)`
+ background: #cfcfcf;
+ `;
