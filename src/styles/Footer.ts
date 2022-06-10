@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const Footer = styled.footer`
-  display:flex;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
   background:  #cc0100;
   height: 68px;
   align-items: center;
+  justify-content:center;
+  text-align:center;
   padding: 25px 40px;
-  overflow-x: hidden;
 
   p {
     color: white;
