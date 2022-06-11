@@ -9,11 +9,10 @@ import { TezosToolkit, WalletContract, MichelsonMap } from "@taquito/taquito";
 import { TransactionInvalidBeaconError } from "./TransactionInvalidBeaconError";
 import { Header } from "./styles/Header";
 import { Footer } from "./styles/Footer";
-import github from "./images/github.png";
 import tombola from "./images/tombola.jpeg";
 import { Section, SubTitle, Title } from "./styles/section";
 import { Mail } from "./styles/mail";
-import { Tombola, TombolaOff } from "./styles/Tombola";
+import { Buttons, Tombola, TombolaOff } from "./styles/Tombola";
 class STATUS {
   oPEN: string | undefined;
   cLOSE: string | undefined;
@@ -219,10 +218,20 @@ function App() {
       {contractStorage?.admin == userAddress ? (
         <TombolaOff>
         <img className="off" src={tombola} alt="tombola" />
-        <Title>Thank you for participating in the Tombola app</Title>
+        <Title>Thank you for participating in the Tombola app!</Title>
+        <Buttons>
+        <Button variant="contained" onClick={(e) => handleClose(e)}>
+            CLOSE
+          </Button>
+          <Button variant="contained" onClick={(e) => handleReset(e)}>
+            RESET
+          </Button>
+        </Buttons>
         </TombolaOff>
       ) : (
         <Tombola>
+          <Buttons>
+          </Buttons>
            <img src={tombola} alt="tombola" />
         {!userAddress ? (
           <ConnectButton
@@ -241,7 +250,7 @@ function App() {
         </Tombola>
       )}
 
-      {contractStorage?.admin == userAddress ? (
+      {/* {contractStorage?.admin == userAddress ? (
         <Fragment>
           <Button variant="contained" onClick={(e) => handleClose(e)}>
             CLOSE
@@ -252,7 +261,7 @@ function App() {
         </Fragment>
       ) : (
         ""
-      )}
+      )} */}
       <Footer>
         <p>Tezos Foundation</p>
         <p>Powered by Marigold</p>

@@ -8,7 +8,6 @@ export const Mail = styled.section`
 
  h3 {
     color: #063f5e;
-    padding-bottom:3px;
     font-family:Roboto;
  }
  label {

@@ -40,3 +40,7 @@ button {
  export const TombolaOff = styled(Tombola)`
  background: #cfcfcf;
  `;
+ export const Buttons = styled.div`
+ display:flex;
+ flex-direction:row;
+`;

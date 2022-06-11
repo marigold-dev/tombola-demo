@@ -23,7 +23,7 @@ padding: 25px 40px;
  } 
 }
 @media only screen and (min-width: 992px) {
-    padding: 60px 35px;
+    padding: 60px;
 
     div {
         display:flex;
