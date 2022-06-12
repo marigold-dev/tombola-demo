@@ -249,19 +249,6 @@ function App() {
         )}
         </Tombola>
       )}
-
-      {/* {contractStorage?.admin == userAddress ? (
-        <Fragment>
-          <Button variant="contained" onClick={(e) => handleClose(e)}>
-            CLOSE
-          </Button>
-          <Button variant="contained" onClick={(e) => handleReset(e)}>
-            RESET
-          </Button>
-        </Fragment>
-      ) : (
-        ""
-      )} */}
       <Footer>
         <p>Tezos Foundation</p>
         <p>Powered by Marigold</p>
