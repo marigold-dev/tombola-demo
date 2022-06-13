@@ -5,6 +5,7 @@ export const Mail = styled.section`
  flex-direction:column;
  padding: 25px  40px;
  text-align:left;
+ width: 70vw;
 
  h3 {
     color: #063f5e;

@@ -5,9 +5,11 @@
  background: #fecc52;
  display:flex;
  flex-direction:column;
- padding: 40px;
+ padding: 10px;
  justify-content:center;
  align-items:center;
+
+ height: calc(100vh - 136px);
 
  @keyframes play {
     from { transform: none; }
@@ -31,8 +33,8 @@
  }
 }
 
-button {
-    margin: 20px;
+button{
+    margin: 8px;
     background: #cc0100;
 }
  `

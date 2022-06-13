@@ -5,9 +5,8 @@ export const Header = styled.header`
   justify-content: space-between;
   background: #cc0100;
   padding: 3px;
-  height: 80px;
-  padding: 25px 40px;
-  color: white;
+  padding: 10px 40px;
+    color: white;
   font-family: Roboto;
   @media only screen and (min-width: 992px) {
     padding: 60px;

@@ -6,6 +6,7 @@
     "@airgap/beacon-sdk": "^3.1.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.2",
     "@taquito/beacon-wallet": "^12.1.1",
     "@taquito/michelson-encoder": "^12.1.1",
