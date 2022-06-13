@@ -9,7 +9,6 @@ export const Header = styled.header`
     color: white;
   font-family: Roboto;
   @media only screen and (min-width: 992px) {
-    padding: 60px;
 }
 
   button {

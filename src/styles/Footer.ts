@@ -9,7 +9,7 @@ export const Footer = styled.footer`
   text-align:center;
   position:absolute;
   bottom:0;
-  width:100vw;
+  width:100%;
   p {
     color: white;
   }
