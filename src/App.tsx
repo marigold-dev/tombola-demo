@@ -29,9 +29,9 @@ class ContractStorage {
 }
 
 function App() {
-  const [network, setNetwork] = useState<string>(NetworkType.ITHACANET);
+  const [network, setNetwork] = useState<string>(NetworkType.JAKARTANET);
   const [tezosUrl, setTezosUrl] = useState<string>(
-    "https://" + NetworkType.ITHACANET + ".tezos.marigold.dev"
+    "https://" + NetworkType.JAKARTANET + ".tezos.marigold.dev"
     );
     const [Tezos, setTezos] = useState<TezosToolkit | undefined>();
     

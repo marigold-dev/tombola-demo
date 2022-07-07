@@ -21,7 +21,7 @@ const DisconnectButton = ({
     //window.localStorage.clear();
     setUserAddress("");
     setWallet(null);
-    setNetwork(NetworkType.ITHACANET);
+    setNetwork(NetworkType.JAKARTANET);
     console.log("disconnecting wallet");
     if (wallet) {
       await wallet.client.removeAllAccounts();

@@ -21,17 +21,17 @@ type return_ =  [list<operation>, storage];
 const participate = ([email,store]:[string,storage]) : return_ => {
     return match(store.status, {
         CLOSE : () =>  failwith("Tombola is closed, come back later"),
-        OPEN : () => [list([]),{...store,participants : Map.add(Tezos.source,email,store.participants)}] 
+        OPEN : () => [list([]),{...store,participants : Map.add(Tezos.get_source(),email,store.participants)}] 
     }); 
 };
 
 const reset = (store:storage) : return_ => {
-    if(store.admin != Tezos.sender) failwith("Only admin can reset Tombola");
+    if(store.admin != Tezos.get_sender()) return failwith("Only admin can reset Tombola");
     return [list([]),{...store,participants : Map.empty as map<address,string>,status:OPEN()}];
 };
 
 const close = (store:storage) : return_ => {
-    if(store.admin != Tezos.sender) failwith("Only admin can close Tombola");
+    if(store.admin != Tezos.get_sender()) return failwith("Only admin can close Tombola");
     return [list([]),{...store,status:CLOSE()}];
 };
 
